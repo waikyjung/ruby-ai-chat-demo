@@ -9,10 +9,9 @@ class Chat
     @message_list = [{"role" => "system", "content" => "You are a helpful assistant."}]
   end
 
-  @dashes = "-" * 50
   def separate
     puts
-    puts @dashes
+    puts "-" * 50
     puts
   end
 
@@ -44,6 +43,8 @@ class Chat
       self.separate
     end
   end
+  puts "Chatbot: Goodbye!"
+  self.separate
 end
 
 new_chat = Chat.new
