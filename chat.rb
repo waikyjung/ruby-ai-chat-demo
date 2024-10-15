@@ -1,28 +1,28 @@
 require "openai"
 require "json"
 
-class Chat
-  attr_accessor :message_list
+client = OpenAI::Client.new(access_token: ENV.fetch("OPEN_AI_KEY"))
 
-  def initialize
-    @client = OpenAI::Client.new(access_token: ENV.fetch("OPEN_AI_KEY"))
-    @message_list = [{"role" => "system", "content" => "You are a helpful assistant."}]
-  end
+=begin
+# Prepare an Array of previous messages
+message_list = [
+  {
+    "role" => "system",
+    "content" => "You are a helpful assistant who talks like Shakespeare."
+  },
+  {
+    "role" => "user",
+    "content" => "Hello! What are the best spots for pizza in Chicago?"
+  }
+]
 
-  def start
-    until statement.downcase == "bye" do
-      @user_statement = gets.chomp
-      @message_list.push({"role" => "user", "content" => @user_statement})
-      @api_response = client.chat(
-        paramenters: {
-          model: "gpt-3.5-turbo",
-          messages: @message_list
-        }
-      
-      )
-      pp api_response
-    end
-  end
-end
+# Call the API to get the next message from GPT
+api_response = client.chat(
+  parameters: {
+    model: "gpt-3.5-turbo",
+    messages: message_list
+  }
+)
 
-chat.start
+pp api_response
+=end
