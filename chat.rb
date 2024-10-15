@@ -1,5 +1,4 @@
 require "openai"
-require "json"
 
 class Chat
   attr_accessor :message_list
@@ -10,10 +9,22 @@ class Chat
     @message_list = [{"role" => "system", "content" => "You are a helpful assistant."}]
   end
 
+  @dashes = "-" * 50
+  def separate
+    puts
+    puts @dashes
+    puts
+  end
+
   def start
-    puts "Say something to chatbot:"
+    puts "Chatbot: Hello! How can I help you today?"
+    self.separate
+    
+    puts "Reply:"
     @user_statement = gets.chomp
     @message_list.push({"role" => "user", "content" => @user_statement})
+    self.separate
+    
     until @user_statement.downcase == "bye" do
       @api_response = @client.chat(
         parameters: {
@@ -21,17 +32,16 @@ class Chat
           messages: @message_list
         }
       )
-
       @system_response = @api_response.fetch("choices")[0].fetch("message").fetch("content")
-      puts
+      @message_list.push({"role" => "system", "content" => @system_response})
       puts "Chatbot:"
       puts "#{@system_response}"
-      @message_list.push({"role" => "system", "content" => @system_response})
+      self.separate
       
-      puts
       puts "Reply:"
       @user_statement = gets.chomp
       @message_list.push({"role" => "user", "content" => @user_statement})
+      self.separate
     end
   end
 end
