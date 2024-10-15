@@ -1,8 +1,11 @@
 require "openai"
 require "json"
 
-client = OpenAI::Client.new(access_token: ENV.fetch("OPENAI_API_KEY"))
+api_key = ENV.fetch("OPENAI_API_KEY")
+pp api_key
+client = OpenAI::Client.new(access_token: api_key)
 
+=begin
 # Prepare an Array of previous messages
 message_list = [
   {
@@ -24,3 +27,4 @@ api_response = client.chat(
 )
 
 pp api_response
+=end
