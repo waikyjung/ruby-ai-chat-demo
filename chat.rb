@@ -16,7 +16,9 @@ class Chat
   end
 
   def start
-    puts "Chatbot: Hello! How can I help you today?"
+    self.separate
+    puts "Chatbot:"
+    puts "Hello! How can I help you today?"
     self.separate
     
     puts "Reply:"
@@ -31,7 +33,7 @@ class Chat
           messages: @message_list
         }
       )
-      @system_response = @api_response.fetch("choices")[0].fetch("message").fetch("content")
+      @system_response = @api_response.fetch("choices")[0].fetch("message").fetch("content").strip
       @message_list.push({"role" => "system", "content" => @system_response})
       puts "Chatbot:"
       puts "#{@system_response}"
@@ -42,9 +44,10 @@ class Chat
       @message_list.push({"role" => "user", "content" => @user_statement})
       self.separate
     end
+    puts "Chatbot:"
+    puts "Goodbye!"
+    self.separate
   end
-  puts "Chatbot: Goodbye!"
-  self.separate
 end
 
 new_chat = Chat.new
