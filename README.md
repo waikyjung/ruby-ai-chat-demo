@@ -10,7 +10,7 @@ To start the application:
 ruby chat.rb
 ```
 
-If the following is not at the bottom, type the code below to create a weather, then the weather with ".start":
+If the following is not at the bottom, type the code below to create a chat, then the chat with ".start":
 ```
 new_chat = Chat.new
 new_chat.start
