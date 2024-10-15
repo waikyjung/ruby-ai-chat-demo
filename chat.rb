@@ -1,7 +1,7 @@
 require "openai"
 require "json"
 
-client = OpenAI::Client.new(access_token: ENV.fetch("OPEN_AI_KEY"))
+client = OpenAI::Client.new(access_token: ENV.fetch("OPENAI_API_KEY"))
 
 # Prepare an Array of previous messages
 message_list = [
