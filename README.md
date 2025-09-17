@@ -1,19 +1,19 @@
 # Introduction
-This is a AI chatting application.
+This is a AI chatting application. UPDATE: This app is no longer active, as the API key has expired.
 
 ## Description
 This AI chatting application will simulate a conversation.
 
 ## Starting the Application
-To start the application:
+You may need to install dependencies.
+To install dependencies:
 ```
-ruby chat.rb
+  bundle install
 ```
 
-If the following is not at the bottom, type the code below to create a chat, then the chat with ".start":
+To start the application:
 ```
-new_chat = Chat.new
-new_chat.start
+
 ```
 
 ## Using the Application
