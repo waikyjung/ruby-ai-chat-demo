@@ -8,7 +8,7 @@ This AI chatting application will simulate a conversation.
 You may need to install dependencies.
 To install dependencies:
 ```
-  bundle install
+bundle install
 ```
 
 To start the application:
